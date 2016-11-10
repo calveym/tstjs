@@ -1,0 +1,19 @@
+{
+  "name": "tstjs",
+  "version": "0.0.1",
+  "description": "A testing microframework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calveym/tstjs.git"
+  },
+  "author": "Michael Calvey",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/calveym/tstjs/issues"
+  },
+  "homepage": "https://github.com/calveym/tstjs#readme"
+}
