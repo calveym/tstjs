@@ -1,6 +1,6 @@
 {
   "name": "tstjs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A testing microframework",
   "main": "main.js",
   "scripts": {
