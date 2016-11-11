@@ -1,33 +1,15 @@
-unitTest = function () {
+var toEq = require('./matchers.js').toEq;
+var UnitTest = require('./unitTest.js').UnitTest;
 
-};
-
-unitTest.prototype.addFirstComparator = function (variable) {
-  this.firstComparator = variable;
-};
-
-unitTest.prototype.addSecondComparator = function (variable) {
-  this.secondComparator = variable;
-};
-
-unitTest.prototype.runComparison = function () {
-  return this.firstComparator === this.secondComparator;
-};
-
-function it (testName, callback) {
+exports.it = function (testName, callback) {
   if(callback() === true) {
-    console.log(testName + " . ");
+    process.stdout.write(".\n");
   } else {
-    console.log(testName + " Failed");
+    process.stdout.write(testName + " Failed\n");
   }
-}
+};
 
-function assert (variable) {
-  test = new unitTest();
+exports.assert = function (variable) {
+  test = new UnitTest();
   test.addFirstComparator(variable);
-}
-
-function toEq (variable) {
-  test.addSecondComparator(variable);
-  return test.runComparison();
-}
+};

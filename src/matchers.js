@@ -1,6 +1,4 @@
-exports = require(module.exports);
-
-function toEq (variable) {
+exports.toEq = function (variable) {
   test.addSecondComparator(variable);
   return test.runComparison();
-}
+};
