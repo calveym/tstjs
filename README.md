@@ -12,7 +12,11 @@ Here is a code snippet that sets up a unit test, where:
 
 
 ```javascript
-it("is 15", function () {
-  assert(thing); return $matcher(otherThing)
+
+var name = 'john';
+
+it("name returns john", function () {
+  assert(name); return toEq('john');
 )};
+
 ```
