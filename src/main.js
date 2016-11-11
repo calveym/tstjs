@@ -1,4 +1,3 @@
-var toEq = require('./matchers.js').toEq;
 var UnitTest = require('./unitTest.js').UnitTest;
 
 exports.it = function (testName, callback) {
@@ -12,4 +11,5 @@ exports.it = function (testName, callback) {
 exports.assert = function (variable) {
   test = new UnitTest();
   test.addFirstComparator(variable);
+  return test;
 };
