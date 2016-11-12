@@ -21,3 +21,7 @@ exports.to = function () {
 exports.notTo = function () {
   return test;
 };
+
+exports.eq = function () {
+  
+};
