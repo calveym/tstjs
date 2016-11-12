@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/calveym/tstjs/issues"
   },
-  "homepage": "https://github.com/calveym/tstjs#readme"
+  "homepage": "https://github.com/calveym/tstjs#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
 }
