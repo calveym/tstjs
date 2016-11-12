@@ -12,7 +12,6 @@ exports.isFalse = function () {
 };
 
 
-
 // WIP:
 exports.to = function () {
   return test;
@@ -23,5 +22,5 @@ exports.notTo = function () {
 };
 
 exports.eq = function () {
-  
+
 };
