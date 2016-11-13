@@ -1,16 +1,16 @@
 var UnitTest = require('./unitTest.js').UnitTest;
+var handler = require('./handler.js');
 
 exports.it = function (testName, callback) {
   if(callback() === true) {
-    process.stdout.write("  " + testName + "  .\n");
+    handler.logSuccess(testName, callback);
   } else {
-    process.stdout.write("  " + testName + "  Failed\n");
+    handler.logFailure(testName, callback);
   }
 };
 
 exports.describe = function (functionName, callback) {
-  process.stdout.write("\n" + functionName);
-  callback();
+  handler.startNewTest(functionName, callback);
 };
 
 exports.assert = function (variable) {
