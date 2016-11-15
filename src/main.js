@@ -36,7 +36,7 @@ function be(variable) {
 
 function runTest() {
   if(test.isPositive) {
-    return(runPostive());
+    return(runPositive());
   } else {
     return(runNegative());
   }
@@ -71,3 +71,40 @@ function processFail(testName) {
     isPassed: false
   });
 }
+
+// variables/ functions for tests
+function multiplyByFive (varToMultiply) {
+  return varToMultiply * 5;
+}
+
+function returnsTrue () {
+  return true;
+}
+
+function startTest (testName) {
+
+}
+
+function endTest (testName) {
+
+}
+
+// Example tests:
+describe("#multiplyByFive", function () {
+  it("returns param multiplied by 5", function () {
+    assert(multiplyByFive(2)); to(); return be(10);
+  });
+
+  it("works with negative numbers", function () {
+    assert(multiplyByFive(-2)); to(); return be(-10);
+  });
+});
+
+describe("#returnsTrue", function () {
+  it("returns true", function () {
+    assert(returnsTrue()); to(); return be(true);
+  });
+  it("does not return false", function () {
+
+  });
+});
