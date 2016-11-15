@@ -28,3 +28,6 @@ For more examples of testing syntax and matchers, please see `./spec`
 
 ## License:
 SEE LICENSE
+
+
+NB while running, tests are stored in a hash of arrays
