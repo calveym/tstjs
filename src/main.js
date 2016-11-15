@@ -1,16 +1,18 @@
 var UnitTest = require('./unitTest.js').UnitTest;
-var handler = require('./handler.js');
+var Logger = require('./logger.js').Logger;
+var logger = new Logger();
 
 exports.it = function (testName, callback) {
   if(callback() === true) {
-    handler.logSuccess(testName, callback);
+    logger.logSuccess(testName, callback);
   } else {
-    handler.logFailure(testName, callback);
+    logger.logFailure(testName, callback);
   }
 };
 
 exports.describe = function (functionName, callback) {
-  handler.startNewTest(functionName, callback);
+  logger.startNewTest(functionName, callback);
+
 };
 
 exports.assert = function (variable) {
@@ -18,3 +20,9 @@ exports.assert = function (variable) {
   test.addFirstComparator(variable);
   return test;
 };
+
+var it = exports.it;
+
+it("returns param multiplied by 5", function () {
+  console.log("This works too hehehe");
+});
