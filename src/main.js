@@ -1,3 +1,5 @@
+var chalk = require('chalk');
+
 var test = {};
 var results = [];
 
@@ -20,12 +22,14 @@ function assert(variable) {
   test.firstVariable = variable;
 }
 
-function to() {
+function to(matcher) {
   test.isPositive = true;
+  return matcher();
 }
 
-function toNot() {
+function toNot(matcher) {
   test.isPositive = false;
+  return matcher();
 }
 
 function be(variable) {
@@ -72,6 +76,22 @@ function processFail(testName) {
   });
 }
 
+function startTest (testName) {
+  logFunction(testName);
+}
+
+function endTest (testName) {
+  logTests(testName);
+}
+
+function logFunction (testName) {
+  console.log(chalk.green("Pass " + testName));
+}
+
+function logTests (testName) {
+
+}
+
 // variables/ functions for tests
 function multiplyByFive (varToMultiply) {
   return varToMultiply * 5;
@@ -81,30 +101,31 @@ function returnsTrue () {
   return true;
 }
 
-function startTest (testName) {
-
-}
-
-function endTest (testName) {
-
-}
-
 // Example tests:
 describe("#multiplyByFive", function () {
   it("returns param multiplied by 5", function () {
-    assert(multiplyByFive(2)); to(); return be(10);
+    assert(multiplyByFive(2)); to(function () {
+      be(10);
+    });
   });
 
   it("works with negative numbers", function () {
-    assert(multiplyByFive(-2)); to(); return be(-10);
+    assert(multiplyByFive(-2)); to(function () {
+      be(-10);
+    });
   });
 });
 
 describe("#returnsTrue", function () {
   it("returns true", function () {
-    assert(returnsTrue()); to(); return be(true);
+    assert(returnsTrue()); to(function () {
+      be(true);
+    });
   });
-  it("does not return false", function () {
 
+  it("does not return false", function () {
+    assert(returnsTrue()); toNot(function () {
+      be(true);
+    });
   });
 });
