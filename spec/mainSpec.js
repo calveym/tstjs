@@ -1,3 +1,5 @@
+// PLEASE NOTE: these tests are currently obsolete. Please disregard them for now.
+
 // Required setup code to import functions:
 var main = require('../src/main.js');
 var unitTest = require('../src/unitTest').unitTest;
