@@ -1,28 +1,53 @@
-var UnitTest = require('./unitTest.js').UnitTest;
-var Logger = require('./logger.js').Logger;
-var logger = new Logger();
+var test = {};
 
-exports.it = function (testName, callback) {
-  if(callback() === true) {
-    logger.logSuccess(testName, callback);
+function describe (testName, callback) {
+  startTest (testName);
+  callback ();
+  endTest (testName);
+}
+
+function it (testName, callback) {
+  if (callback () === true) {
+    addPass (testName, callback());
   } else {
-    logger.logFailure(testName, callback);
+    addFail (testName, callback());
   }
-};
+}
 
-exports.describe = function (functionName, callback) {
-  logger.startNewTest(functionName, callback);
+function assert (variable) {
+  test.firstVariable = variable;
+}
 
-};
+function to () {
+  test.isPositive = true;
+}
 
-exports.assert = function (variable) {
-  test = new UnitTest();
-  test.addFirstComparator(variable);
-  return test;
-};
+function toNot () {
+  test.isPositive = false;
+}
 
-var it = exports.it;
+function be (variable) {
+  test.firstVariable = variable;
+  test.matcher = 'be';
+  return runTest();
+}
 
-it("returns param multiplied by 5", function () {
-  console.log("This works too hehehe");
-});
+function runTest () {
+  if(test.isPositive) {
+    return(runPostive());
+  } else {
+    return(runNegative());
+  }
+}
+
+function runNegative () {
+  if(test.matcher === 'be') {
+    return(test.firstVariable !== test.secondVariable);
+  }
+}
+
+function runPositive () {
+  if(test.matcher === 'be') {
+    return(test.firstVariable === test.secondVariable);
+  }
+}
