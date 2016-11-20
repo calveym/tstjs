@@ -1,14 +1,21 @@
 var chalk = require('chalk');
 
-function Assert (variable) {
+function Assert(variable) {
+  this.firstComparator = variable;
 }
 
-Assert.prototype.to = function () {
-
+Assert.prototype.toBe = function (variable) {
+  this.secondComparator = variable;
+  this.matcher = 'to be';
+  this.result = this.firstComparator === this.secondComparator;
+  return this;
 };
 
-Assert.prototype.toNot = function () {
-
+Assert.prototype.toNotBe = function (variable) {
+  this.secondComparator = variable;
+  this.matcher = 'to not be';
+  this.result = this.firstComparator !== this.secondComparator;
+  return this;
 };
 
 
@@ -27,6 +34,8 @@ function it(testName, test) {
     processFail(testName, test);
   }
 }
+
+function processPass
 
 function assert(variable) {
   return new Assert(variable);
