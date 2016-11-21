@@ -21,10 +21,9 @@ Assert.prototype.toNotBe = function (variable) {
 
 function describe(testName, arrayOfTests) {
   startLog(testName);
-  arrayOfTests.map(function (thisArg) {
-    logTest(thisArg());
+  arrayOfTests.forEach(function(element) {
+    element();
   });
-  endLog(testName);
 }
 
 function it(testName, test) {
@@ -35,8 +34,27 @@ function it(testName, test) {
   }
 }
 
-function processPass
+function processPass(testName, test) {
+  console.log(chalk.green("  " + testName));
+}
+
+function processFail(testName, test) {
+  console.log(chalk.red("  " + testName));
+  console.log(chalk.red("  Expected " + test.firstComparator + test.matcher + test.secondComparator));
+}
 
 function assert(variable) {
   return new Assert(variable);
 }
+
+function startLog(testName) {
+  console.log(chalk.green(testName));
+}
+
+var name = 'john';
+
+describe("#name", [function () {
+  it("returns john", function () {
+    assert(name).toBe('john');
+  });
+}]);
