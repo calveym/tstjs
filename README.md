@@ -17,12 +17,20 @@ Here is a code snippet that sets up a unit test:
 ```javascript
 var name = 'john';
 
-describe("#name", function () {
+describe("#name", [
+  (function () {
   it("returns john", function () {
-    assert(name).toBe('john');
+    return assert(name).toBe('john');
   });
-});
+}),
+  (function () {
+  it("returns multiple john", function () {
+    return assert(name + name + name).toNotBe('john');
+  });
+})]);
 ```
+
+This readme is being updated! Please check back soon- there will be lots more here!
 
 ## License:
 SEE LICENSE
